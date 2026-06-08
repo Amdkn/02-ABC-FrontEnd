@@ -29,7 +29,7 @@ interface TabDef {
 const TABS: TabDef[] = [
   { key: 'community', label: 'Community', icon: 'users', href: '/community' },
   { key: 'learn', label: 'Learn', icon: 'graduationCap', href: '/learn' },
-  { key: 'build', label: 'Build', icon: 'wrench', href: '/build' },
+  { key: 'build', label: 'Build', icon: 'wrench', href: '/build-hub' },
   { key: 'brand', label: 'Brand', icon: 'award', href: '/brand' },
 ];
 

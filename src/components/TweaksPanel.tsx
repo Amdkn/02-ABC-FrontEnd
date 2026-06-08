@@ -26,7 +26,7 @@ const PHONE_SIZES = [
 const HUB_TABS = [
   { value: '/community', label: 'Community' },
   { value: '/learn', label: 'Learn' },
-  { value: '/build', label: 'Build' },
+  { value: '/build-hub', label: 'Build' },
   { value: '/brand', label: 'Brand' },
 ] as const;
 
