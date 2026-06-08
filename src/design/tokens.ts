@@ -2,28 +2,33 @@
  * ABC Childcare Portal — Design Tokens
  *
  * Centralized source of truth for color, typography, spacing, radius and
- * motion values. Mirrors the values that lived in the legacy HTML prototype
- * (Landing.html, screens.jsx, landing.jsx). Components should reference
- * tokens from this file rather than hardcoding hex/rgb values.
+ * motion values. Mirrors the COLORS palette in the legacy prototype
+ * (`_legacy/prototype-2026-06-07/screens.jsx`) plus tokens from `landing.jsx`,
+ * `ios-frame.jsx`. Components should reference tokens from this file rather
+ * than hardcoding hex/rgb values.
  */
 
-export const colors = {
-  bg: '#0c0b0a',
-  bgAlt: '#121110',
-  card: '#181614',
-  cardHi: '#221f1c',
+export const COLORS = {
+  bg: '#121110',
+  bgAlt: '#181614',
+  card: '#221f1c',
+  cardHi: '#2a2622',
   line: 'rgba(245,242,235,0.08)',
   text: '#f5f2eb',
   textMute: '#a89c8a',
   textDim: '#6b6258',
-  textSoft: '#cfc4b3',
-  textMid: '#d8cdbb',
   green: '#10b981',
   greenDeep: '#059669',
   terracotta: '#e15f41',
   terracottaDeep: '#d95436',
-  gold: '#d4b042',
   blue: '#5b8bb7',
+} as const;
+
+export const colors = {
+  ...COLORS,
+  textSoft: '#cfc4b3',
+  textMid: '#d8cdbb',
+  gold: '#d4b042',
   pink: '#c47a96',
 } as const;
 

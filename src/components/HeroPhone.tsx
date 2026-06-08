@@ -1,25 +1,44 @@
 'use client';
 
-import { useState } from 'react';
-import { EmbeddedPhone } from './EmbeddedPhone';
-import type { TabKey } from '@/lib/types';
+import { useEffect, useState } from 'react';
+import { IOSDevice } from './IOSDevice';
+import { CommunityHub } from './HubScreens/CommunityHub';
+import { LearnHub } from './HubScreens/LearnHub';
+import { BuildHub } from './HubScreens/BuildHub';
+import { BrandHub } from './HubScreens/BrandHub';
+import { Icon } from './Icon';
+import { COLORS } from '@/design/tokens';
 
-interface HeroPhoneProps {
-  calloutLabels: {
-    brandImpact: string;
-    brandImpactScore: string;
-    brandImpactLede: string;
-    brandImpactDelta: string;
-    cooperativeActive: string;
-    newMembersTitle: string;
-    newMembersSub: string;
-  };
-}
+const TABS = [
+  { key: 'community', label: 'Community', icon: 'users' as const, render: () => <CommunityHub /> },
+  { key: 'learn', label: 'Learn', icon: 'graduationCap' as const, render: () => <LearnHub /> },
+  { key: 'build', label: 'Build', icon: 'wrench' as const, render: () => <BuildHub /> },
+  { key: 'brand', label: 'Brand', icon: 'award' as const, render: () => <BrandHub /> },
+];
 
-export function HeroPhone({ calloutLabels }: HeroPhoneProps) {
-  const [tab, setTab] = useState<TabKey>('community');
+const ORDER = ['community', 'learn', 'build', 'brand'];
+
+/**
+ * Embedded phone preview used on the landing page. Cycles through the 4
+ * HUBs every ~5s so visitors can see the OS is real. Mirrors the legacy
+ * `landing.jsx` HeroPhone 1:1, plus the floating callouts (Brand Impact
+ * 85/100, Solaris Agri-Coop step 3 of 5, 128 new members this week).
+ */
+export function HeroPhone() {
+  const [tab, setTab] = useState('community');
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setTab((cur) => ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
+    }, 5200);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const T = TABS.find((x) => x.key === tab) ?? TABS[0];
+
   return (
     <div className="relative">
+      {/* Halo */}
       <div
         style={{
           position: 'absolute',
@@ -30,20 +49,19 @@ export function HeroPhone({ calloutLabels }: HeroPhoneProps) {
           filter: 'blur(20px)',
         }}
       />
+      {/* Phone */}
       <div
         className="relative anim-float"
         style={{ filter: 'drop-shadow(0 50px 80px rgba(0,0,0,0.5))' }}
       >
-        <EmbeddedPhone
-          tab={tab}
-          width={368}
-          height={780}
-          interactive
-          autoRotate
-          onChangeTab={setTab}
-        />
+        <IOSDevice width={368} height={780} dark hideTabBar>
+          <div className="relative h-full" style={{ paddingTop: 54 }}>
+            {T.render()}
+          </div>
+        </IOSDevice>
       </div>
 
+      {/* Floating callouts */}
       <div
         className="absolute hidden lg:flex flex-col gap-1.5 px-3.5 py-2.5 rounded-2xl text-left"
         style={{
@@ -54,29 +72,38 @@ export function HeroPhone({ calloutLabels }: HeroPhoneProps) {
           border: '1px solid var(--line)',
           backdropFilter: 'blur(8px)',
           zIndex: 10,
+          color: COLORS.text,
         }}
       >
         <div className="eyebrow" style={{ fontSize: 9 }}>
-          {calloutLabels.brandImpact}
+          Brand Impact
         </div>
         <div className="flex items-baseline gap-1">
           <span className="font-serif italic text-[36px] leading-none">85</span>
-          <span className="text-[12px] font-semibold" style={{ color: '#a89c8a' }}>
-            {calloutLabels.brandImpactScore}
+          <span
+            className="text-[12px] font-semibold"
+            style={{ color: COLORS.textMute }}
+          >
+            / 100
           </span>
         </div>
-        <div className="text-[11px]" style={{ color: '#a89c8a' }}>
-          {calloutLabels.brandImpactLede}
-          <span style={{ color: '#10b981' }}>{calloutLabels.brandImpactDelta}</span>
+        <div className="text-[11px]" style={{ color: COLORS.textMute }}>
+          Résonance communautaire —{' '}
+          <span style={{ color: COLORS.green }}>+6 cette semaine</span>
         </div>
-        <svg width="140" height="30" style={{ position: 'absolute', right: -130, top: 34 }}>
+        {/* connector */}
+        <svg
+          width="140"
+          height="30"
+          style={{ position: 'absolute', right: -130, top: 34 }}
+        >
           <path
             d="M2 15 Q70 15 130 18"
             stroke="rgba(245,242,235,0.18)"
             strokeDasharray="3 4"
             fill="none"
           />
-          <circle cx="130" cy="18" r="3" fill="#e15f41" />
+          <circle cx="130" cy="18" r={3} fill={COLORS.terracotta} />
         </svg>
       </div>
 
@@ -89,6 +116,7 @@ export function HeroPhone({ calloutLabels }: HeroPhoneProps) {
           border: '1px solid var(--line)',
           backdropFilter: 'blur(8px)',
           zIndex: 10,
+          color: COLORS.text,
         }}
       >
         <span
@@ -97,24 +125,30 @@ export function HeroPhone({ calloutLabels }: HeroPhoneProps) {
             width: 8,
             height: 8,
             borderRadius: 99,
-            background: '#10b981',
-            boxShadow: '0 0 12px #10b981',
+            background: COLORS.green,
+            boxShadow: `0 0 12px ${COLORS.green}`,
           }}
         />
         <div>
-          <div className="text-[11px]" style={{ color: '#a89c8a' }}>
+          <div className="text-[11px]" style={{ color: COLORS.textMute }}>
             Solaris Agri-Coop
           </div>
-          <div className="text-[12.5px] font-semibold">{calloutLabels.cooperativeActive}</div>
+          <div className="text-[12.5px] font-semibold">
+            Étape 3 de 5 · validée
+          </div>
         </div>
-        <svg width="140" height="30" style={{ position: 'absolute', left: -130, top: 14 }}>
+        <svg
+          width="140"
+          height="30"
+          style={{ position: 'absolute', left: -130, top: 14 }}
+        >
           <path
             d="M138 15 Q70 15 10 18"
             stroke="rgba(245,242,235,0.18)"
             strokeDasharray="3 4"
             fill="none"
           />
-          <circle cx="10" cy="18" r="3" fill="#10b981" />
+          <circle cx={10} cy={18} r={3} fill={COLORS.green} />
         </svg>
       </div>
 
@@ -128,35 +162,40 @@ export function HeroPhone({ calloutLabels }: HeroPhoneProps) {
           border: '1px solid var(--line)',
           backdropFilter: 'blur(8px)',
           zIndex: 10,
+          color: COLORS.text,
         }}
       >
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center"
-          style={{ background: 'rgba(225,95,65,0.18)', color: '#e15f41' }}
+          style={{
+            background: 'rgba(225,95,65,0.18)',
+            color: COLORS.terracotta,
+          }}
         >
-          <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-          </svg>
+          <Icon name="users" size={18} />
         </div>
         <div className="flex-1">
-          <div className="text-[12.5px] font-semibold">{calloutLabels.newMembersTitle}</div>
-          <div className="text-[11px]" style={{ color: '#a89c8a' }}>
-            {calloutLabels.newMembersSub}
+          <div className="text-[12.5px] font-semibold">128 nouveaux membres</div>
+          <div className="text-[11px]" style={{ color: COLORS.textMute }}>
+            cette semaine, 9 pays
           </div>
         </div>
-        <svg width="140" height="30" style={{ position: 'absolute', right: -130, top: 18 }}>
+        <svg
+          width="140"
+          height="30"
+          style={{ position: 'absolute', right: -130, top: 18 }}
+        >
           <path
             d="M2 15 Q70 5 130 8"
             stroke="rgba(245,242,235,0.18)"
             strokeDasharray="3 4"
             fill="none"
           />
-          <circle cx="130" cy="8" r="3" fill="#e15f41" />
+          <circle cx={130} cy={8} r={3} fill={COLORS.terracotta} />
         </svg>
       </div>
     </div>
   );
 }
+
+export default HeroPhone;

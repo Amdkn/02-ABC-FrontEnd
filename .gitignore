@@ -71,3 +71,5 @@ Thumbs.db
 
 # Legacy prototype archive (kept locally for rollback, already in PARA doctrine)
 /_legacy/
+
+.vercel

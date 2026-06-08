@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { IOSDevice } from './IOSDevice';
-import { IOSStatusBar } from './IOSStatusBar';
 import { Icon } from './Icon';
 import type { IconName } from './Icon';
 import { BrandHub, BuildHub, CommunityHub, LearnHub } from './HubScreens';
@@ -152,20 +151,17 @@ export function EmbeddedPhone({
 
   return (
     <div style={{ width, height, position: 'relative' }}>
-      <IOSDevice width={width} height={height} dark>
-        <div className="relative" style={{ height: '100%' }}>
-          <IOSStatusBar dark />
-          <div style={{ position: 'absolute', inset: 0, paddingTop: 54 }}>
-            <Screen tab={tab} />
-            {showNav && (
-              <div
-                onClick={interactive ? undefined : (e) => e.stopPropagation()}
-                style={{ pointerEvents: interactive ? 'auto' : 'none' }}
-              >
-                <EmbeddedNav current={tab} onChange={handleChange} />
-              </div>
-            )}
-          </div>
+      <IOSDevice width={width} height={height} dark hideTabBar>
+        <div className="relative h-full" style={{ paddingTop: 54 }}>
+          <Screen tab={tab} />
+          {showNav && (
+            <div
+              onClick={interactive ? undefined : (e) => e.stopPropagation()}
+              style={{ pointerEvents: interactive ? 'auto' : 'none' }}
+            >
+              <EmbeddedNav current={tab} onChange={handleChange} />
+            </div>
+          )}
         </div>
       </IOSDevice>
     </div>

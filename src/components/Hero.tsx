@@ -4,20 +4,6 @@ import { HeroPhone } from './HeroPhone';
 
 export async function Hero() {
   const t = await getTranslations('hero');
-  const tCallout = await getTranslations('callout');
-
-  // Resolve the callout strings up front so we only pass plain data across
-  // the RSC boundary (RSC forbids passing translator functions to Client
-  // Components).
-  const calloutLabels = {
-    brandImpact: tCallout('brandImpact'),
-    brandImpactScore: tCallout('brandImpactScore'),
-    brandImpactLede: tCallout('brandImpactLede'),
-    brandImpactDelta: tCallout('brandImpactDelta'),
-    cooperativeActive: tCallout('cooperativeActive'),
-    newMembersTitle: tCallout('newMembersTitle'),
-    newMembersSub: tCallout('newMembersSub'),
-  };
 
   return (
     <section className="relative pt-12 md:pt-20 pb-24" style={{ zIndex: 2 }}>
@@ -102,7 +88,7 @@ export async function Hero() {
           </div>
 
           <div className="flex justify-center lg:justify-end relative">
-            <HeroPhone calloutLabels={calloutLabels} />
+            <HeroPhone />
           </div>
         </div>
       </div>

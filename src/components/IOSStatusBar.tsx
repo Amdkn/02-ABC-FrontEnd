@@ -3,6 +3,10 @@ export interface IOSStatusBarProps {
   time?: string;
 }
 
+/**
+ * iOS status bar with time, signal bars, wifi, and battery glyphs.
+ * Mirrors the iOS 26 status bar spec from `_legacy/prototype-2026-06-07/ios-frame.jsx`.
+ */
 export function IOSStatusBar({ dark = false, time = '9:41' }: IOSStatusBarProps) {
   const c = dark ? '#fff' : '#000';
   return (
@@ -79,3 +83,5 @@ export function IOSStatusBar({ dark = false, time = '9:41' }: IOSStatusBarProps)
     </div>
   );
 }
+
+export default IOSStatusBar;

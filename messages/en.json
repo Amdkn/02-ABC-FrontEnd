@@ -202,5 +202,170 @@
     "cooperativeActive": "Step 3 of 5 · validated",
     "newMembersTitle": "128 new members",
     "newMembersSub": "this week, 9 countries"
+  },
+  "hubs": {
+    "community": {
+      "title": "Community",
+      "kicker": "The Assembly",
+      "searchPlaceholder": "Search discussions and members…",
+      "tabs": {
+        "feed": "Feed",
+        "coops": "Co-ops",
+        "events": "Events"
+      },
+      "feed": {
+        "kpName": "Kaelan Patel",
+        "kpTime": "2h ago · Lagos, NG",
+        "kpText": "Looking for advice from anyone who has gone through the process. What are the key documents and registrations required? ",
+        "aoName": "Amara Okoro",
+        "aoBadge": "Co-op lead",
+        "aoTime": "1 day ago · Nairobi, KE",
+        "aoText": "Our Agri-Tech coop just secured its first round of funding! A huge thank you to everyone in the "
+      },
+      "suggested": "Suggested for you",
+      "sahelTitle": "Sahel Solar Builders",
+      "sahelSub": "248 members · 4 you know",
+      "join": "Join"
+    },
+    "learn": {
+      "title": "Learn Hub",
+      "kicker": "Cultivating knowledge",
+      "searchPlaceholder": "Search courses & topics…",
+      "myCourses": "My Courses",
+      "seeAll": "See all",
+      "recommended": "Recommended for You",
+      "categories": "Course Categories",
+      "courses": {
+        "architect": {
+          "title": "Architect Principles",
+          "sub": "Foundations",
+          "count": 14
+        },
+        "financial": {
+          "title": "Financial Literacy",
+          "sub": "Numbers",
+          "count": 18
+        },
+        "brand": {
+          "title": "Brand Storytelling",
+          "sub": "Marketing",
+          "count": 11
+        },
+        "system": {
+          "title": "System Building",
+          "sub": "Cooperative Foundations"
+        },
+        "regen": {
+          "title": "Regenerative Finance",
+          "sub": "Money as Soil"
+        },
+        "categories": [
+          { "title": "Architect Principles", "count": 14 },
+          { "title": "System Building", "count": 9 },
+          { "title": "Brand Storytelling", "count": 11 },
+          { "title": "Financial Literacy", "count": 18 },
+          { "title": "Sustainable Practices", "count": 8 },
+          { "title": "Solarpunk Principles", "count": 6 }
+        ]
+      }
+    },
+    "build": {
+      "title": "Build Hub",
+      "kicker": "Building together",
+      "tabs": {
+        "projects": "My Projects",
+        "tools": "Cooperative Tools"
+      },
+      "projects": {
+        "solaris": {
+          "name": "Solaris Agri-Coop",
+          "tagline": "Solar-powered cooperative farming · Kenya",
+          "status": "In Progress",
+          "milestone": "Milestone progress",
+          "next": "Finalize Distribution Plan"
+        },
+        "umoja": {
+          "name": "Umoja Weavers Collective",
+          "tagline": "Heritage textiles & shared looms · Tanzania",
+          "status": "Planning",
+          "milestone": "Milestone progress",
+          "next": "Draft Cooperative Agreement"
+        },
+        "ctaTitle": "Ready to build together?",
+        "ctaBody": "Tap the \"+\" button to start your first cooperative business and bring your vision to life."
+      },
+      "tools": {
+        "agreement": {
+          "title": "Agreement Drafter",
+          "sub": "Co-op contract templates"
+        },
+        "treasury": {
+          "title": "Treasury Ledger",
+          "sub": "Shared books & payouts"
+        },
+        "onboarding": {
+          "title": "Member Onboarding",
+          "sub": "Vote, invite, ratify"
+        },
+        "supply": {
+          "title": "Supply Network",
+          "sub": "Find regional partners"
+        },
+        "harvest": {
+          "title": "Harvest Calendar",
+          "sub": "Seasonal milestones"
+        },
+        "impact": {
+          "title": "Impact Reporting",
+          "sub": "Track regenerative KPIs"
+        }
+      }
+    },
+    "brand": {
+      "title": "Brand Hub",
+      "kicker": "Your collective identity",
+      "impactLabel": "Brand Impact",
+      "impactDelta": "↗ +6 this week",
+      "impactLede": "Your current community resonance. Steady growth this month — keep telling your story.",
+      "subscores": {
+        "story": "Story",
+        "reach": "Reach",
+        "impact": "Impact"
+      },
+      "actions": {
+        "crafting": {
+          "title": "Crafting Your Story",
+          "sub": "Define values, mission, and visual identity."
+        },
+        "monetize": {
+          "title": "Monetization Strategies",
+          "sub": "Explore pricing, digital products, and grants."
+        },
+        "community": {
+          "title": "Community Impact",
+          "sub": "Track social good and member collaboration."
+        }
+      },
+      "inspiration": "Inspiration Hub",
+      "case": {
+        "label": "Case study",
+        "brand": "Soko Weavers",
+        "title": "Doubled Their Reach",
+        "sub": "How cooperative marketing expanded their global footprint.",
+        "cta": "Read story"
+      },
+      "atlas": {
+        "title": "Brand Atlas",
+        "sub": "Visual identities from 24 African co-ops"
+      }
+    },
+    "splash": {
+      "eyebrow": "ABC OS",
+      "tagline": "From Learning\nto Cooperation,\nfrom Cooperation\nto Civilization.",
+      "subtitle": "African Business Cooperatives — Operating System",
+      "primaryCta": "Join the Cooperative",
+      "secondaryCta": "Sign in",
+      "footer": "A regenerative work · Open Source"
+    }
   }
 }

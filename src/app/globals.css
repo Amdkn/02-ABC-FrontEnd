@@ -128,6 +128,13 @@ body {
     repeating-linear-gradient(110deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 6px),
     linear-gradient(180deg, #1f3a2b 0%, #2c5a3a 38%, #3d7a47 70%, #5a9a4f 100%);
 }
+.tex-loom {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.55) 100%),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0 2px, transparent 2px 8px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 4px),
+    linear-gradient(135deg, #6b3a1c 0%, #a25a30 45%, #c97842 100%);
+}
 
 /* ── Horizon + grain overlays (root layer) ───────────────── */
 .horizon {
